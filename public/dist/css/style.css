@@ -1,0 +1,65 @@
+.about-heading {
+    color:#353535;
+    font-size: 43px;
+    font-weight: 800;
+    letter-spacing: 5px;
+}
+p { 
+    /* font-size: 18px !important; */
+    color: #535353'
+}
+@media only screen and (min-width: 600px) {
+    #postBlog .card {
+        height:450px;
+    }
+}
+
+#postBlog .card-image img {
+    height:250px;
+    width:100%;
+    object-fit: cover;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar .topnav a {
+    color: rgba(0,0,0,0.87);
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+}
+
+.navbar .brand-logo {
+    color: rgba(0,0,0,0.87);
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+footer h5, a {
+    color: rgba(0,0,0,0.87);
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+}
+
+footer li i.material-icons {
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 32px 0 0;
+    width: 24px;
+    color: rgba(0,0,0,0.54);
+}
+
+.tabs-content.carousel.carousel-slider .carousel-item.active{
+    position: relative;
+}
+
+.tabs-content {
+    height: auto !important;
+    min-height: 100%;
+}
