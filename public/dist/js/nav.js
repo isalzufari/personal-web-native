@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Activate sidebar nav
     var sidenav = document.querySelectorAll(".sidenav");
-    M.Sidenav.init(sidenav);
+    M.Sidenav.init(sidenav); 
     
     loadNav();
   
@@ -53,12 +53,15 @@ document.addEventListener("DOMContentLoaded", function() {
             AOS.init();
           
             if (page === "blogs") {
+              document.title = "Blog | SiISAL";
               getBlog()
 
               var toolTipped = document.querySelectorAll('.tooltipped');
               M.Tooltip.init(toolTipped);
 
             } else if (page === "hello") {
+              document.title = "Personal Blog | SiISAL";
+              
               const modalHello = document.querySelector('.modal');
               const instance = M.Modal.init(modalHello);
               instance.open();
@@ -87,16 +90,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 .typeString('i hope you enjoy it.')
                 .start();
             } else if (page === "film"){
+              document.title = "Film | SiISAL";
               const tab = document.querySelectorAll('.tabs')
               M.Tabs.init(tab, {
                 swipeable :false
               });
               getListRatedTV()
               getListRatedMovies()
+            } else if (page === "contact") {
+              document.title = "Kontak | SiISAL";
+            } else if (page === "about") {
+              document.title = "Tentang | SiISAL";
             }
           } else if (this.status == 404) {
+            document.title = "404 | Error";
             content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
           } else {
+            document.title = "Error";
             content.innerHTML = "<p>Ups.. halaman tidak dapat diakses.</p>";
           }
         }

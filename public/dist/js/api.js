@@ -56,7 +56,7 @@ const USER_DATA = {
 function getListPost(labels) {
   document.getElementById('changePage').style.display = 'block';
   document.getElementById('loader').style.display = 'block';
-  fetchApi(blog_url + '&labels=' + labels + pageToken + '&maxResults=8')
+  fetchApi(blog_url + '&labels=' + labels + pageToken + '&maxResults=8') 
     .then(status)
     .then(json)
     .then((data) => {
@@ -65,7 +65,7 @@ function getListPost(labels) {
       USER_DATA.saveDataPost = data.items;
 
       if('nextPageToken' in data){
-        pageToken = '+ &pageToken=' + data.nextPageToken;;
+        pageToken = '+ &pageToken=' + data.nextPageToken;
         document.getElementById('nextPage').disabled = false;
       } else {
         document.getElementById('nextPage').disabled = true;

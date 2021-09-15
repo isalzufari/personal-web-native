@@ -3,14 +3,16 @@ function showPostHTML(data) {
     data.forEach((post) => {
       let thumbImages = post.images;
       if (thumbImages === undefined) {
-        thumbImages = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Blogger.svg/245px-Blogger.svg.png';
+        thumbImages = '/dist/img/BlogBlank.png';
       } else {
         thumbImages = thumbImages[0].url;
       }
   
-      const months = ['Jan', 'Fev', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const months = ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const current_datetime = new Date(post.published)
       const formatted_date = months[current_datetime.getMonth()] + ' ' + current_datetime.getDate() + ', ' +  current_datetime.getFullYear()
+  
+      // const commentApi = post.replies.selfLink + '?key=AIzaSyDseH2DsJhfAGWuP40r2z4DHsppVWtEMZg';
   
       let getlabels = post.labels;
       if (getlabels === undefined) {
@@ -19,40 +21,24 @@ function showPostHTML(data) {
   
         postHTML += `
           <div data-aos='fade-up' class='col s12 m6 l4'>
-            <div class='card'>
+            <div class='card' style='width: 100%;'>
               <div class='card-image'>
-                <img class='activator' src='${thumbImages}'>
-                <span class='card-title'>
-                  <blockquote>
-                    <b class='activator'>${getlabels}</b>
-                  </blockquote>
-                </span>
-                <a class='btn-floating halfway-fab waves-effect waves-light red activator'><i class='material-icons'>expand_less</i></a>
+                <a href='${post.url}' target='_blank' rel='nofollow'>
+                  <img src='${thumbImages}' alt='${post.title}'>
+                </a>
+                <button class='btn-floating halfway-fab  waves-effect waves-light btn-floating red' onclick='favPost(this)' value='${post.id}' id='fav${post.id}' style='display : none'><i class='material-icons'>favorite_border</i></button>
+                <button class='btn-floating halfway-fab  waves-effect waves-light btn-floating red' onclick='delPost(this)' value='${post.id}' id='del${post.id}' style='display : none'><i class='material-icons'>favorite</i></button>
               </div>
               <div class='card-content'>
-                <p class='card-title activator grey-text text-darken-4'><b>${post.title.substr(0, 15)}...</b></p>
+                <p class="truncate">${post.title}</p>
                 <p>${formatted_date}</p>
-                <br>
-                  <div class='row'>
-                    <div class='col s6'>
-                      <button class='waves-effect waves-light btn-floating' onclick='favPost(this)' value='${post.id}' id='fav${post.id}' style='display : none'><i class='material-icons'>favorite_border</i></button>
-                      <button class='waves-effect waves-light btn-floating' onclick='delPost(this)' value='${post.id}' id='del${post.id}' style='display : none'><i class='material-icons'>favorite</i></button>
+                <div class="right-align">
+                  <a href="#head" onclick="getBlog('${getlabels}')">
+                    <div class="chip">
+                      ${getlabels}
                     </div>
-                    <div class='col s6'>
-                      <a class='waves-effect waves-light btn-floating right' target='_blank' href='${post.url}'><i class='material-icons'>chevron_right</i></a>
-                    </div>
-                  </div>
-              </div>
-              <div class='card-reveal'>
-                <p class='card-title grey-text text-darken-4'><b>${post.title}</b><a class='btn-floating waves-effect waves-light red activator right'><i class='material-icons'>expand_more</i></a></p>
-                <ul class='collection'>
-                  <li class='collection-item avatar'>
-                    <img src='${post.author.image.url}' alt='${post.author.displayName}' class='circle'>
-                    <span class='title'>${post.author.displayName}</span>
-                    <p>- Author</p>
-                    <a href='${post.author.url}' class='secondary-content'><i class='material-icons'>grade</i></a>
-                  </li>
-                </ul>
+                  </a>
+                </div>  
               </div>
             </div>
           </div>
@@ -78,7 +64,6 @@ function showPostHTML(data) {
 function showRatedTV(data) {
     let postHTML = '';
     data.forEach((post) => {
-        console.log(post)
         const posterImg = `//image.tmdb.org/t/p/w500${post.poster_path}`
 
         const months = ['Jan', 'Fev', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -118,7 +103,6 @@ function showRatedTV(data) {
 function showRatedMovies(data) {
   let postHTML = '';
   data.forEach((post) => {
-      console.log(post)
       const posterImg = `//image.tmdb.org/t/p/w500${post.poster_path}`
 
       const months = ['Jan', 'Fev', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

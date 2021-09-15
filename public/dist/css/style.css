@@ -1,17 +1,34 @@
+#about .col {
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+}
+
 .about-heading {
     color:#353535;
     font-size: 43px;
     font-weight: 800;
     letter-spacing: 5px;
 }
-p { 
-    /* font-size: 18px !important; */
-    color: #535353'
+
+@media only screen and (max-width: 600px) {
+    .about-heading {
+        text-align: center;
+    }
 }
+
 @media only screen and (min-width: 600px) {
     #postBlog .card {
-        height:450px;
+        height:380px;
     }
+}
+@media only screen and (min-width: 992px) {
+    #wid-about .card {
+        height:520px;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 #postBlog .card-image img {
@@ -20,8 +37,9 @@ p {
     object-fit: cover;
 }
 
-html {
-    scroll-behavior: smooth;
+p {
+    font-weight: 450; 
+    color:#757575;
 }
 
 .navbar .topnav a {
